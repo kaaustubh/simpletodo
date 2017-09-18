@@ -181,21 +181,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
             let tName = alertController.textFields?.first?.text
             
             if task != nil{
-                try! uiRealm.write{
-                    //task.taskName = tName!
-                    uiRealm.add(task, update: true)
-                    self!.updateTasks()
-                }
+                ToDoManager.sharedInstance.update(taskId: task.taskId, taskName: tName!)
+                self!.updateTasks()
             }
             else{
                 
-                let newtask = Task()
-                newtask.taskName = tName!
-                
-                try! uiRealm.write{
-                    uiRealm.add(newtask)
-                    self!.updateTasks()
-                }
+                ToDoManager.sharedInstance.addTask(name: tName!)
+                self!.updateTasks()
             }
         }
         
@@ -339,12 +331,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate
                 task = self.pendingTasks[indexPath.row]
             }
             
-            try! uiRealm.write{
+            ToDoManager.sharedInstance.delete(task: task)
             
-                uiRealm.delete(task)
-                
-                self.updateTasks()
-            }
+            self.updateTasks()
         }
     
     }
@@ -354,16 +343,8 @@ extension ViewController: TaskCellDelegate
 {
     func completeTaskWithId(taskId: String)
     {
-        let predicate = NSPredicate(format: "taskId == %@", taskId)
-        let filteredtasks = self.tasks.filter(predicate)
-        if filteredtasks.count > 0
-        {
-            let tasktoComplete = filteredtasks.first
-            try! uiRealm.write{
-                tasktoComplete?.status = Status.completed.rawValue
-                self.updateTasks()
-            }
-        }
+        ToDoManager.sharedInstance.completeTask(taskId: taskId)
+        self.updateTasks()
     }
     
     

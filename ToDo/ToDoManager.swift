@@ -75,11 +75,30 @@ class ToDoManager{
             uiRealm.delete(task)
         }
     }
-    
-    public func update(task : Task)
+    public func completeTask(taskId: String)
     {
-        try! uiRealm.write{
-            uiRealm.add(task, update: true)
+        let predicate = NSPredicate(format: "taskId == %@", taskId)
+        let filteredtasks = self.tasks.filter(predicate)
+        if filteredtasks.count > 0
+        {
+            let tasktoComplete = filteredtasks.first
+            try! uiRealm.write{
+                tasktoComplete?.status = Status.completed.rawValue
+            }
         }
+    }
+    
+    public func update(taskId : String, taskName: String)
+    {
+        let predicate = NSPredicate(format: "taskId == %@", taskId)
+        let filteredtasks = self.tasks.filter(predicate)
+        if filteredtasks.count > 0
+        {
+            let tasktoComplete = filteredtasks.first
+            try! uiRealm.write{
+                tasktoComplete?.taskName = taskName
+            }
+        }
+       
     }
 }
