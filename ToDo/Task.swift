@@ -9,6 +9,12 @@
 import Foundation
 import RealmSwift
 
+enum FilterType {
+    case dateAscending
+    case dateDescending
+    case alphabetically
+}
+
 enum Status: String {
     case pending
     case completed
@@ -20,7 +26,9 @@ class Task: Object {
     dynamic var taskId = UUID().uuidString
     dynamic var status = Status.pending.rawValue
     override static func primaryKey() -> String? {
+        
         return "taskId"
+        
     }
     
 }

@@ -10,11 +10,7 @@ import UIKit
 import RealmSwift
 import DropDown
 
-enum FilterType {
-    case dateAscending
-    case dateDescending
-    case alphabetically
-}
+
 
 class ViewController: UIViewController, UISearchBarDelegate {
 
@@ -200,6 +196,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
         alertController.addTextField { (textField) -> Void in
+            
+            textField.accessibilityLabel = "Task-Name"
             textField.placeholder = "Task Name"
             if task != nil{
                 textField.text = task.taskName

@@ -9,9 +9,11 @@
 import Foundation
 import RealmSwift
 
+let uiRealm = try! Realm()
 
 class ToDoManager{
     static let sharedInstance = ToDoManager()
+    
     var tasks = uiRealm.objects(Task.self)
     
     public func getTasks(status: Status, searchText: String, filterType: FilterType) -> Results<Task>!
@@ -45,7 +47,7 @@ class ToDoManager{
     public func getCompletedTasks() -> Results<Task>!
     {
         var tasksToReturn : Results<Task>!
-        let predicate = NSPredicate(format: "status == completed")
+        let predicate = NSPredicate(format: "status == %@", "completed")
         tasksToReturn = self.tasks.filter(predicate)
         return tasksToReturn
     }
@@ -53,7 +55,7 @@ class ToDoManager{
     public func getPendingTasks() -> Results<Task>!
     {
         var tasksToReturn : Results<Task>!
-        let predicate = NSPredicate(format: "status == pending")
+        let predicate = NSPredicate(format: "status == %@", "pending")
         tasksToReturn = self.tasks.filter(predicate)
         return tasksToReturn
     }

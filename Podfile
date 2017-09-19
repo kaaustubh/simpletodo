@@ -11,12 +11,16 @@ pod 'DLRadioButton'
 
   target 'ToDoTests' do
     inherit! :search_paths
+use_frameworks!
+pod 'RealmSwift'
     # Pods for testing
   end
 
   target 'ToDoUITests' do
     inherit! :search_paths
     # Pods for testing
+   use_frameworks!
+pod 'RealmSwift'
   end
 
 end
