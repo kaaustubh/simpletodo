@@ -634,7 +634,7 @@
 				DEVELOPMENT_TEAM = SHRSH9NB3G;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vwg.vw.thinkservice.mechanicqs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaustubh.india;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7b46c173-014b-4934-be61-0f88c4d7e719";
 				PROVISIONING_PROFILE_SPECIFIER = "Think Service QS";
@@ -650,7 +650,7 @@
 				DEVELOPMENT_TEAM = SHRSH9NB3G;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vwg.vw.thinkservice.mechanicqs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaustubh.india;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7b46c173-014b-4934-be61-0f88c4d7e719";
 				PROVISIONING_PROFILE_SPECIFIER = "Think Service QS";
